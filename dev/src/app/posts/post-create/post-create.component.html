@@ -1,0 +1,27 @@
+<!-- <mat-card>
+  <h3>One way data binding</h3>
+  <mat-form-field>
+    <textarea rows="3" matInput [value]="newPost" #postVal></textarea>
+  </mat-form-field>
+  <br>
+  Event Listener - (click)
+  <button mat-raised-button color="accent" (click)="onAddPost(postVal)">Save Post</button>
+  String interpolation - {{}}
+  <p>{{ newPost }}</p>
+</mat-card> -->
+
+<mat-card>
+  <h3>Two way data binding</h3>
+  <!-- ngModel is an angular feature,it's a so-called directive. A directive is basically an instruction you place on an html element
+  and angular or you can also create your own one so that the relative knows what to do on that element then. ngModel is a directive
+  that actually will listen to user input and emit that data to us and also store new data in that text area or output it there.
+  Now important, ngModel by default won't work, it's a feature which is not included in the core angular package here, it's not included in the browser
+  module which we already added, it's included in a different module which we need to add, it's included in the so-called forms module because it's related to forms inputs and this is part
+  of @angular/forms, so that's still part of the core framework but of a different part of the framework.
+  -->
+  <mat-form-field>
+    <textarea rows="3" matInput [(ngModel)]="textareaVal"></textarea>
+  </mat-form-field>
+  <br>
+  <button mat-stroked-button color="accent" (click)="onAddPost2()">Save Post</button>
+</mat-card>
