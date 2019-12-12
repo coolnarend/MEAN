@@ -19,9 +19,18 @@
   module which we already added, it's included in a different module which we need to add, it's included in the so-called forms module because it's related to forms inputs and this is part
   of @angular/forms, so that's still part of the core framework but of a different part of the framework.
   -->
-  <mat-form-field>
-    <textarea rows="3" matInput [(ngModel)]="textareaVal"></textarea>
-  </mat-form-field>
-  <br>
-  <button mat-stroked-button color="accent" (click)="onAddPost2()">Save Post</button>
+
+  <!-- Template driven form -->
+  <form (submit)="onAddPost2(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input type="text" matInput name="title" ngModel placeholder="Title" required #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea rows="3" matInput name="content" ngModel placeholder="Content" required #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter a post content.</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-stroked-button color="accent" type="submit">Save Post</button>
+  </form>
 </mat-card>
